@@ -1,5 +1,5 @@
 {
-  "name": "plugin-generator",
+  "name": "wordpress-elementor-plugin-generator",
   "version": "0.1.0",
   "private": true,
   "scripts": {
