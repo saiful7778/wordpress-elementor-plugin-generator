@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-bg {
+  --pattern-line-color: #ffffff08;
+  --pattern-line-width: 1px;
+  --pattern-box-size: 30px;
+  background-image: linear-gradient(
+      var(--pattern-line-color) var(--pattern-line-width),
+      transparent var(--pattern-line-width)
+    ),
+    linear-gradient(
+      to right,
+      var(--pattern-line-color) var(--pattern-line-width),
+      transparent var(--pattern-line-width)
+    );
+  background-size: var(--pattern-box-size) var(--pattern-box-size);
+}
+
+.con-bg {
+  @apply w-full rounded-md border border-gray-700 bg-gray-800/50 p-2;
+}
