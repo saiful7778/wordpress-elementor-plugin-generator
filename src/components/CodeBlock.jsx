@@ -23,8 +23,12 @@ export const Function = ({ name, children, invoke }) => {
   );
 };
 
-export const String = ({ children }) => {
-  return <span className="mx-2 text-amber-300">{`"${children}"`}</span>;
+export const String = ({ children, single }) => {
+  return (
+    <span className="mx-2 text-amber-300">
+      {single ? `'${children}'` : `"${children}"`}
+    </span>
+  );
 };
 
 export const Keyword = ({ children }) => {
