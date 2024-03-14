@@ -4,6 +4,8 @@ import { createContext, useRef, useState } from "react";
 export const StateContext = createContext(null);
 
 const StateContextProvider = ({ children }) => {
+  const [enableElementor, setEnableElementor] = useState(false);
+
   const codeRef = useRef();
   const [pluginDetails, setPluginDetails] = useState({
     pluginName: "",
@@ -24,6 +26,14 @@ const StateContextProvider = ({ children }) => {
   const handlePluginDetails = (inputData) =>
     setPluginDetails({ ...pluginDetails, ...inputData });
 
+  const [elementorDetails, setElementorDetails] = useState({
+    elementorMinimumVersion: "3.0.0",
+    phpMinimumVersion: "7.2",
+  });
+
+  const handleElementorDetails = (inputData) =>
+    setElementorDetails({ ...elementorDetails, ...inputData });
+
   return (
     <StateContext.Provider
       value={{
@@ -31,6 +41,10 @@ const StateContextProvider = ({ children }) => {
         handlePluginDetails,
         codeRef,
         code: codeRef.current,
+        enableElementor,
+        setEnableElementor,
+        elementorDetails,
+        handleElementorDetails,
       }}
     >
       {children}
