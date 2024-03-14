@@ -1,4 +1,16 @@
 "use client";
+import {
+  Declear,
+  Function,
+  Keyword,
+  Line,
+  LineGap,
+  LongComment,
+  LongCommentLine,
+  Operator,
+  Scope,
+  String,
+} from "@/components/CodeBlock";
 import SectionTitle from "@/components/SectionTitle";
 import { TabItem, TabList } from "@/components/Tab";
 import useStateData from "@/hooks/useStateData";
@@ -21,176 +33,274 @@ const CodePage = () => {
           </TabItem>
         </TabList>
         <Tab.Panels className="p-2">
-          <Tab.Panel className="con-bg">
+          <Tab.Panel className="con-bg overflow-auto">
             <div className="text-sm" ref={codeRef}>
               <pre>
                 <code>
-                  <div className="text-blue-500">{"<?php"}</div>
-                  <div className="ml-2 leading-tight text-green-600">
-                    {`// This details shown in wordpress dashboard`}
-                  </div>
-                  <div className="ml-2 leading-tight text-green-600">
-                    <div>{`/ *`}</div>
-                    <div>{`* Plugin Name: ${pluginDetails.pluginName}`}</div>
-                    <div>{`* Description: ${pluginDetails.description}`}</div>
-
+                  <Declear>{"<?php"}</Declear>
+                  <LongComment>
+                    <LongCommentLine name="Plugin Name">
+                      {pluginDetails.pluginName}
+                    </LongCommentLine>
+                    <LongCommentLine name="Description">
+                      {pluginDetails.description}
+                    </LongCommentLine>
                     {pluginDetails.pluginURI && (
-                      <div>{`* Plugin URI: ${pluginDetails.pluginURI}`}</div>
+                      <LongCommentLine name="Plugin URI">
+                        {pluginDetails.pluginURI}
+                      </LongCommentLine>
                     )}
-
-                    <div>{`* Version: ${pluginDetails.version}`}</div>
-                    <div>{`* Require At Least: ${pluginDetails.requireAtLeast}`}</div>
-                    <div>{`* Requires PHP: ${pluginDetails.requiresPHP}`}</div>
-
-                    <div>* License: GPL v2 or later</div>
-                    <div>
-                      * License URI: https://www.gnu.org/licenses/gpl-2.0.html
-                    </div>
+                    <LongCommentLine name="Version">
+                      {pluginDetails.version}
+                    </LongCommentLine>
+                    <LongCommentLine name="Require At Least">
+                      {pluginDetails.requireAtLeast}
+                    </LongCommentLine>
+                    <LongCommentLine name="Requires PHP">
+                      {pluginDetails.requiresPHP}
+                    </LongCommentLine>
+                    <LongCommentLine name="License">
+                      GPL v2 or later
+                    </LongCommentLine>
+                    <LongCommentLine name="License URI">
+                      https://www.gnu.org/licenses/gpl-2.0.html
+                    </LongCommentLine>
                     {pluginDetails.updateURI && (
-                      <div>{`* Update URI: ${pluginDetails.updateURI}`}</div>
+                      <LongCommentLine name="Update URI">
+                        {pluginDetails.updateURI}
+                      </LongCommentLine>
                     )}
-
-                    <div>{`* Author: ${pluginDetails.author}`}</div>
+                    <LongCommentLine name="Author">
+                      {pluginDetails.author}
+                    </LongCommentLine>
                     {pluginDetails.authorURI && (
-                      <div>{`* Author URI: ${pluginDetails.authorURI}`}</div>
+                      <LongCommentLine name="Author URI">
+                        {pluginDetails.authorURI}
+                      </LongCommentLine>
                     )}
-
-                    <div>{`* Text Domain: ${pluginDetails.textDomain}`}</div>
+                    <LongCommentLine name="Text Domain">
+                      {pluginDetails.textDomain}
+                    </LongCommentLine>
                     {pluginDetails.domainPath && (
-                      <div>{`* Domain Path: ${pluginDetails.domainPath}`}</div>
+                      <LongCommentLine name="Domain Path">
+                        {pluginDetails.domainPath}
+                      </LongCommentLine>
                     )}
-
-                    <div>{`* /`}</div>
-                  </div>
-                  <div className="text-amber-600">
-                    if (!defined({" "}
-                    <span className="text-amber-300">{`"ABSPATH"`}</span> )){" "}
-                    {`{`}
-                  </div>
-                  <div className="text-amber-600">
-                    {" "}
-                    exit<span className="text-gray-50">;</span>
-                  </div>
-                  <div className="text-amber-600">{`}`}</div>
+                    {enableElementor && (
+                      <>
+                        <LongCommentLine name="Elementor tested up to">
+                          {elementorDetails.elementorTested}
+                        </LongCommentLine>
+                        <LongCommentLine name="Elementor Pro tested up to">
+                          {elementorDetails.elementorProTested}
+                        </LongCommentLine>
+                      </>
+                    )}
+                  </LongComment>
+                  <Scope
+                    scopeRef={
+                      <Function name="if">
+                        !
+                        <Function name="defined">
+                          <String>ABSPATH</String>
+                        </Function>
+                      </Function>
+                    }
+                  >
+                    <Keyword>exit;</Keyword>
+                  </Scope>
                   {enableElementor && (
                     <>
-                      <div className="text-blue-500">
-                        final class{" "}
-                        <span className="text-gray-50">
+                      <Scope
+                        scopeRef={
+                          <>
+                            <Keyword>final</Keyword>
+                            <Keyword>class</Keyword>
+                            <Declear>
+                              {pluginDetails.pluginName.split(" ").join("")}
+                            </Declear>
+                          </>
+                        }
+                      >
+                        <Line>
+                          <Keyword>const</Keyword>
+                          <Declear>VERSION</Declear>
+                          <Operator>{`=`}</Operator>
+                          <String>{pluginDetails.version}</String>
+                        </Line>
+                        <Line>
+                          <Keyword>const</Keyword>
+                          <Declear>ELEMENTOR_MINIMUM_VERSION</Declear>
+                          <Operator>{`=`}</Operator>
+                          <String>
+                            {elementorDetails.elementorMinimumVersion}
+                          </String>
+                        </Line>
+                        <Line>
+                          <Keyword>const</Keyword>
+                          <Declear>PHP_MINIMUM_VERSION</Declear>
+                          <Operator>{`=`}</Operator>
+                          <String>{elementorDetails.phpMinimumVersion}</String>
+                        </Line>
+                        <LineGap />
+                        <Line>
+                          <Keyword>private</Keyword>
+                          <Keyword>static</Keyword>
+                          <Declear>$_instance</Declear>
+                          <Operator>{`=`}</Operator>
+                          <Keyword>null</Keyword>
+                        </Line>
+                        <LineGap />
+                        {/* _construct function */}
+                        <Scope
+                          scopeRef={
+                            <Function
+                              name={
+                                <>
+                                  <Keyword>public</Keyword>
+                                  <Keyword>function</Keyword>
+                                  <Declear>_construct</Declear>
+                                </>
+                              }
+                            />
+                          }
+                        >
+                          <Scope
+                            scopeRef={
+                              <Function name="if">
+                                <Keyword>{`$this->`}</Keyword>
+                                <Function name="is_compatible" />
+                              </Function>
+                            }
+                          >
+                            <Function name="add_action" invoke>
+                              <String>elementor/init</String>,
+                              <Operator>[</Operator>
+                              <Keyword>$this,</Keyword>
+                              <String>init_plugin</String>
+                              <Operator>]</Operator>
+                            </Function>
+                          </Scope>
+                          <Function name="add_action" invoke>
+                            <String>init</String>,<Operator>[</Operator>
+                            <Keyword>$this,</Keyword>
+                            <String>i18n</String>
+                            <Operator>]</Operator>
+                          </Function>
+                        </Scope>
+                        {/* is_compatible function */}
+                        <Scope
+                          scopeRef={
+                            <Function
+                              name={
+                                <>
+                                  <Keyword>public</Keyword>
+                                  <Keyword>function</Keyword>
+                                  <Declear>is_compatible</Declear>
+                                </>
+                              }
+                            />
+                          }
+                        ></Scope>
+                        {/* i18n function */}
+                        <Scope
+                          scopeRef={
+                            <Function
+                              name={
+                                <>
+                                  <Keyword>public</Keyword>
+                                  <Keyword>function</Keyword>
+                                  <Declear>i18n</Declear>
+                                </>
+                              }
+                            />
+                          }
+                        >
+                          <Function name="load_plugin_textdomain" invoke>
+                            <String>{pluginDetails.textDomain}</String>
+                          </Function>
+                        </Scope>
+                        {/* init_plugin function */}
+                        <Scope
+                          scopeRef={
+                            <Function
+                              name={
+                                <>
+                                  <Keyword>public</Keyword>
+                                  <Keyword>function</Keyword>
+                                  <Declear>init_plugin</Declear>
+                                </>
+                              }
+                            />
+                          }
+                        ></Scope>
+                        {/* init_widgets function */}
+                        <Scope
+                          scopeRef={
+                            <Function
+                              name={
+                                <>
+                                  <Keyword>public</Keyword>
+                                  <Keyword>function</Keyword>
+                                  <Declear>init_widgets</Declear>
+                                </>
+                              }
+                            />
+                          }
+                        ></Scope>
+                        {/* get_instance function */}
+                        <Scope
+                          scopeRef={
+                            <Function
+                              name={
+                                <>
+                                  <Keyword>public</Keyword>
+                                  <Keyword>static</Keyword>
+                                  <Keyword>function</Keyword>
+                                  <Declear>get_instance</Declear>
+                                </>
+                              }
+                            />
+                          }
+                        >
+                          <Scope
+                            scopeRef={
+                              <Function name="if">
+                                <Keyword>null</Keyword>
+                                <Operator>{`===`}</Operator>
+                                <Keyword>self</Keyword>
+                                <Operator>::</Operator>
+                                <Declear>$_instance</Declear>
+                              </Function>
+                            }
+                          >
+                            <Line>
+                              <Keyword>self</Keyword>
+                              <Operator>::</Operator>
+                              <Declear>$_instance</Declear>
+                              <Operator>{`=`}</Operator>
+                              <Keyword>new</Keyword>
+                              <Function name="Self" />
+                            </Line>
+                          </Scope>
+                          <Line>
+                            <Keyword>return</Keyword>
+                            <Keyword>self</Keyword>
+                            <Operator>::</Operator>
+                            <Declear>$_instance</Declear>
+                          </Line>
+                        </Scope>
+                      </Scope>
+                      <Line>
+                        <Declear>
                           {pluginDetails.pluginName.split(" ").join("")}
-                        </span>
-                        {` {`}
-                      </div>
-                      <div className="ml-2">
-                        <div>
-                          <span className="text-amber-600">const </span>
-                          <span className="text-blue-500">VERSION = </span>
-                          <span className="text-amber-300">{`'${pluginDetails.version}'`}</span>
-                          <span>;</span>
-                        </div>
-                        <div>
-                          <span className="text-amber-600">const </span>
-                          <span className="text-blue-500">
-                            ELEMENTOR_MINIMUM_VERSION ={" "}
-                          </span>
-                          <span className="text-amber-300">{`'${elementorDetails.elementorMinimumVersion}'`}</span>
-                          <span>;</span>
-                        </div>
-                        <div>
-                          <span className="text-amber-600">const </span>
-                          <span className="text-blue-500">
-                            PHP_MINIMUM_VERSION ={" "}
-                          </span>
-                          <span className="text-amber-300">{`'${elementorDetails.phpMinimumVersion}'`}</span>
-                          <span>;</span>
-                        </div>
-                        <div>
-                          <span className="text-amber-600">
-                            private static{" "}
-                          </span>
-                          <span className="text-blue-500">
-                            $_instance = null
-                          </span>
-                          <span>;</span>
-                        </div>
-                        <div className="mt-4 text-amber-600">
-                          public function _construct() {`{`}
-                          <div className="ml-4">
-                            <div>
-                              <span className="text-blue-500">
-                                add_action({" "}
-                              </span>
-                              <span className="text-amber-300">{`'init', `}</span>
-                              <span className="text-blue-500">[ $this, </span>
-                              <span className="text-amber-300">{`'i18n' `}</span>
-                              <span className="text-blue-500">]</span>
-                              <span className="text-blue-500"> );</span>
-                            </div>
-                            <div>
-                              <span className="text-blue-500">
-                                add_action({" "}
-                              </span>
-                              <span className="text-amber-300">{`'plugin_loaded', `}</span>
-                              <span className="text-blue-500">[ $this, </span>
-                              <span className="text-amber-300">{`'init_plugin' `}</span>
-                              <span className="text-blue-500">]</span>
-                              <span className="text-blue-500"> );</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mt-4 text-amber-600">{`}`}</div>
-                        <div className="mt-4 text-amber-600">
-                          public function i18n() {`{`}
-                        </div>
-                        <div className="ml-4 text-blue-500">
-                          load_plugin_textdomain(
-                          {`'${pluginDetails.textDomain}'`});
-                        </div>
-                        <div className="mt-4 text-amber-600">{`}`}</div>
-                        <div className="mt-4 text-amber-600">
-                          public function init_plugin() {`{`}
-                        </div>
-                        <div className="mt-4 text-amber-600">{`}`}</div>
-                        <div className="mt-4 text-amber-600">
-                          public function init_widgets() {`{`}
-                        </div>
-                        <div className="mt-4 text-amber-600">{`}`}</div>
-                        <div className="mt-4 text-amber-600">
-                          public static function get_instance() {`{`}
-                        </div>
-                        <div className="ml-4">
-                          <div>
-                            <span className="text-blue-500">if</span>{" "}
-                            <span className="text-amber-600">(</span>{" "}
-                            <span className="text-gray-500">null</span> ===
-                            <span className="text-amber-500"> self</span>::
-                            <span className="text-blue-500">$_instance</span>
-                            <span className="text-amber-600">)</span>{" "}
-                            <span className="text-blue-500">{`{`}</span>
-                          </div>
-                          <div className="ml-4">
-                            <span className="text-amber-500">self</span>::
-                            <span className="text-blue-500">$_instance</span> =
-                            <span className="text-amber-500"> new Self()</span>;
-                          </div>
-                          <div className="text-blue-500">{`}`}</div>
-                        </div>
-                        <div className="ml-4">
-                          <span className="text-blue-500">return</span>
-                          <span className="text-amber-500"> self</span>::
-                          <span className="text-blue-500">$_instance</span>;
-                        </div>
-                        <div className="text-amber-600">{`}`}</div>
-                      </div>
-                      <div className="text-blue-500">{`}`}</div>
-
-                      <div className="my-4 text-amber-600">
-                        {pluginDetails.pluginName.split(" ").join("")}
-                        ::<span className="text-blue-500">get_instance()</span>;
-                      </div>
+                        </Declear>
+                        <Operator>::</Operator>
+                        <Function name="get_instance" />
+                      </Line>
                     </>
                   )}
-                  <div className="text-blue-500">{"?>"}</div>
+                  <Declear>{"?>"}</Declear>
                 </code>
               </pre>
             </div>

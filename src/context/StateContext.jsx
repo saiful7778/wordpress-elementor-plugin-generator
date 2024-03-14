@@ -29,6 +29,8 @@ const StateContextProvider = ({ children }) => {
   const [elementorDetails, setElementorDetails] = useState({
     elementorMinimumVersion: "3.0.0",
     phpMinimumVersion: "7.2",
+    elementorTested: "3.20.1",
+    elementorProTested: "3.20.0",
   });
 
   const handleElementorDetails = (inputData) =>

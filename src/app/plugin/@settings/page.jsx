@@ -169,6 +169,27 @@ const SettingsPage = () => {
                 />
                 <Input
                   type="text"
+                  name="elementorTested"
+                  placeholder="Elementor Tested up to"
+                  label="Elementor Tested up to"
+                  value={elementorDetails.elementorTested}
+                  onChange={(e) =>
+                    handleElementorDetails({ elementorTested: e })
+                  }
+                />
+                <Input
+                  type="text"
+                  name="elementorProTested"
+                  placeholder="Elementor Pro Tested up to"
+                  label="Elementor Pro Tested up to"
+                  value={elementorDetails.elementorProTested}
+                  onChange={(e) =>
+                    handleElementorDetails({ elementorProTested: e })
+                  }
+                />
+
+                <Input
+                  type="text"
                   name="phpMinimumVersion"
                   placeholder="PHP Minimum Version"
                   label="PHP Minimum Version"
