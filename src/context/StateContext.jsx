@@ -5,6 +5,8 @@ export const StateContext = createContext(null);
 
 const StateContextProvider = ({ children }) => {
   const [enableElementor, setEnableElementor] = useState(false);
+  const [enableCompatibilityCheck, setEnableCompatibilityCheck] =
+    useState(false);
 
   const codeRef = useRef();
   const [pluginDetails, setPluginDetails] = useState({
@@ -45,6 +47,8 @@ const StateContextProvider = ({ children }) => {
         code: codeRef.current,
         enableElementor,
         setEnableElementor,
+        enableCompatibilityCheck,
+        setEnableCompatibilityCheck,
         elementorDetails,
         handleElementorDetails,
       }}
