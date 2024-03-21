@@ -119,8 +119,8 @@ const CodePage = () => {
                       <Scope
                         scopeRef={
                           <>
-                            <Keyword>final</Keyword>
-                            <Keyword>class</Keyword>
+                            <Keyword gap>final</Keyword>
+                            <Keyword gap>class</Keyword>
                             <Declear>
                               {pluginDetails.pluginName.split(" ").join("")}
                             </Declear>
@@ -128,24 +128,24 @@ const CodePage = () => {
                         }
                       >
                         <Line>
-                          <Keyword>const</Keyword>
-                          <Declear>VERSION</Declear>
+                          <Keyword gap>const</Keyword>
+                          <Declear gap>VERSION</Declear>
                           <Operator>{`=`}</Operator>
                           <String>{pluginDetails.version}</String>
                         </Line>
                         {enableCompatibilityCheck && (
                           <>
                             <Line>
-                              <Keyword>const</Keyword>
-                              <Declear>ELEMENTOR_MINIMUM_VERSION</Declear>
+                              <Keyword gap>const</Keyword>
+                              <Declear gap>ELEMENTOR_MINIMUM_VERSION</Declear>
                               <Operator>{`=`}</Operator>
                               <String>
                                 {elementorDetails.elementorMinimumVersion}
                               </String>
                             </Line>
                             <Line>
-                              <Keyword>const</Keyword>
-                              <Declear>PHP_MINIMUM_VERSION</Declear>
+                              <Keyword gap>const</Keyword>
+                              <Declear gap>PHP_MINIMUM_VERSION</Declear>
                               <Operator>{`=`}</Operator>
                               <String>
                                 {elementorDetails.phpMinimumVersion}
@@ -156,11 +156,11 @@ const CodePage = () => {
 
                         <LineGap />
                         <Line>
-                          <Keyword>private</Keyword>
-                          <Keyword>static</Keyword>
+                          <Keyword gap>private</Keyword>
+                          <Keyword gap>static</Keyword>
                           <Declear>$_instance</Declear>
-                          <Operator>{`=`}</Operator>
-                          <Keyword>null</Keyword>
+                          <Operator gap>{`=`}</Operator>
+                          <Keyword gap>null</Keyword>
                         </Line>
                         <LineGap />
                         {/* _construct function */}
@@ -169,9 +169,9 @@ const CodePage = () => {
                             <Function
                               name={
                                 <>
-                                  <Keyword>public</Keyword>
-                                  <Keyword>function</Keyword>
-                                  <Declear>_construct</Declear>
+                                  <Keyword gap>public</Keyword>
+                                  <Keyword gap>function</Keyword>
+                                  <Declear>__construct</Declear>
                                 </>
                               }
                             />
@@ -190,8 +190,8 @@ const CodePage = () => {
                               <Function name="add_action" invoke>
                                 <String>elementor/init</String>
                                 <Operator>,</Operator>
-                                <Operator>[</Operator>
-                                <Keyword>$this</Keyword>
+                                <Operator gap>[</Operator>
+                                <Keyword gap>$this</Keyword>
                                 <Operator>,</Operator>
                                 <String>init_plugin</String>
                                 <Operator>]</Operator>
@@ -201,8 +201,8 @@ const CodePage = () => {
                             <Function name="add_action" invoke>
                               <String>elementor/init</String>
                               <Operator>,</Operator>
-                              <Operator>[</Operator>
-                              <Keyword>$this</Keyword>
+                              <Operator gap>[</Operator>
+                              <Keyword gap>$this</Keyword>
                               <Operator>,</Operator>
                               <String>init_plugin</String>
                               <Operator>]</Operator>
@@ -212,8 +212,8 @@ const CodePage = () => {
                             <Function name="add_action">
                               <String>init</String>
                               <Operator>,</Operator>
-                              <Operator>[</Operator>
-                              <Keyword>$this</Keyword>
+                              <Operator gap>[</Operator>
+                              <Keyword gap>$this</Keyword>
                               <Operator>,</Operator>
                               <String>i18n</String>
                               <Operator>]</Operator>
@@ -228,8 +228,8 @@ const CodePage = () => {
                                 <Function
                                   name={
                                     <>
-                                      <Keyword>public</Keyword>
-                                      <Keyword>function</Keyword>
+                                      <Keyword gap>public</Keyword>
+                                      <Keyword gap>function</Keyword>
                                       <Declear>is_compatible</Declear>
                                     </>
                                   }
@@ -250,8 +250,8 @@ const CodePage = () => {
                                 <Function name="add_action" invoke>
                                   <String>admin_notices</String>
                                   <Operator>,</Operator>
-                                  <Operator>[</Operator>
-                                  <Keyword>$this</Keyword>
+                                  <Operator gap>[</Operator>
+                                  <Keyword gap>$this</Keyword>
                                   <Operator>,</Operator>
                                   <String>
                                     admin_notice_missing_main_plugin
@@ -259,7 +259,7 @@ const CodePage = () => {
                                   <Operator>]</Operator>
                                 </Function>
                                 <Line>
-                                  <Keyword>return</Keyword>
+                                  <Keyword gap>return</Keyword>
                                   <Declear>false</Declear>
                                 </Line>
                               </Scope>
@@ -270,10 +270,10 @@ const CodePage = () => {
                                     !
                                     <Function name="version_compare">
                                       <Keyword>ELEMENTOR_VERSION</Keyword>
-                                      <Operator>,</Operator>
+                                      <Operator gap>,</Operator>
                                       <Keyword>self</Keyword>
                                       <Operator>::</Operator>
-                                      <Declear>
+                                      <Declear gap>
                                         ELEMENTOR_MINIMUM_VERSION
                                       </Declear>
                                       <Operator>,</Operator>
@@ -294,7 +294,7 @@ const CodePage = () => {
                                   <Operator>]</Operator>
                                 </Function>
                                 <Line>
-                                  <Keyword>return</Keyword>
+                                  <Keyword gap>return</Keyword>
                                   <Declear>false</Declear>
                                 </Line>
                               </Scope>
@@ -304,7 +304,7 @@ const CodePage = () => {
                                   <Function name="if">
                                     <Function name="version_compare">
                                       <Keyword>PHP_VERSION</Keyword>
-                                      <Operator>,</Operator>
+                                      <Operator gap>,</Operator>
                                       <Keyword>self</Keyword>
                                       <Operator>::</Operator>
                                       <Declear>PHP_MINIMUM_VERSION</Declear>
@@ -326,12 +326,12 @@ const CodePage = () => {
                                   <Operator>]</Operator>
                                 </Function>
                                 <Line>
-                                  <Keyword>return</Keyword>
+                                  <Keyword gap>return</Keyword>
                                   <Declear>false</Declear>
                                 </Line>
                               </Scope>
                               <Line>
-                                <Keyword>return</Keyword>
+                                <Keyword gap>return</Keyword>
                                 <Declear>true</Declear>
                               </Line>
                             </Scope>
@@ -341,8 +341,8 @@ const CodePage = () => {
                                 <Function
                                   name={
                                     <>
-                                      <Keyword>public</Keyword>
-                                      <Keyword>function</Keyword>
+                                      <Keyword gap>public</Keyword>
+                                      <Keyword gap>function</Keyword>
                                       <Declear>
                                         admin_notice_missing_main_plugin
                                       </Declear>
@@ -372,7 +372,7 @@ const CodePage = () => {
                               </Scope>
                               <Line>
                                 <Keyword>$message</Keyword>
-                                <Operator>{`=`}</Operator>
+                                <Operator gap>{`=`}</Operator>
                                 <Function name="sprintf">
                                   <Function name="esc_html__">
                                     <String
@@ -417,8 +417,8 @@ const CodePage = () => {
                                 <Function
                                   name={
                                     <>
-                                      <Keyword>public</Keyword>
-                                      <Keyword>function</Keyword>
+                                      <Keyword gap>public</Keyword>
+                                      <Keyword gap>function</Keyword>
                                       <Declear>
                                         admin_notice_minimum_elementor_version
                                       </Declear>
@@ -448,7 +448,7 @@ const CodePage = () => {
                               </Scope>
                               <Line>
                                 <Keyword>$message</Keyword>
-                                <Operator>{`=`}</Operator>
+                                <Operator gap>{`=`}</Operator>
                                 <Function name="sprintf">
                                   <Function name="esc_html__">
                                     <String
@@ -480,7 +480,7 @@ const CodePage = () => {
                                   <Operator>,</Operator>
                                   <Keyword>self</Keyword>
                                   <Operator>::</Operator>
-                                  <Declear>$ELEMENTOR_MINIMUM_VERSION</Declear>
+                                  <Declear>ELEMENTOR_MINIMUM_VERSION</Declear>
                                 </Function>
                               </Line>
                               <Function name="printf" invoke>
@@ -497,8 +497,8 @@ const CodePage = () => {
                                 <Function
                                   name={
                                     <>
-                                      <Keyword>public</Keyword>
-                                      <Keyword>function</Keyword>
+                                      <Keyword gap>public</Keyword>
+                                      <Keyword gap>function</Keyword>
                                       <Declear>
                                         admin_notice_minimum_php_version
                                       </Declear>
@@ -528,7 +528,7 @@ const CodePage = () => {
                               </Scope>
                               <Line>
                                 <Keyword>$message</Keyword>
-                                <Operator>{`=`}</Operator>
+                                <Operator gap>{`=`}</Operator>
                                 <Function name="sprintf">
                                   <Function name="esc_html__">
                                     <String
@@ -560,7 +560,7 @@ const CodePage = () => {
                                   <Operator>,</Operator>
                                   <Keyword>self</Keyword>
                                   <Operator>::</Operator>
-                                  <Declear>$PHP_MINIMUM_VERSION</Declear>
+                                  <Declear>PHP_MINIMUM_VERSION</Declear>
                                 </Function>
                               </Line>
                               <Function name="printf" invoke>
@@ -579,8 +579,8 @@ const CodePage = () => {
                             <Function
                               name={
                                 <>
-                                  <Keyword>public</Keyword>
-                                  <Keyword>function</Keyword>
+                                  <Keyword gap>public</Keyword>
+                                  <Keyword gap>function</Keyword>
                                   <Declear>i18n</Declear>
                                 </>
                               }
@@ -597,8 +597,8 @@ const CodePage = () => {
                             <Function
                               name={
                                 <>
-                                  <Keyword>public</Keyword>
-                                  <Keyword>function</Keyword>
+                                  <Keyword gap>public</Keyword>
+                                  <Keyword gap>function</Keyword>
                                   <Declear>init_plugin</Declear>
                                 </>
                               }
@@ -611,8 +611,8 @@ const CodePage = () => {
                             <Function
                               name={
                                 <>
-                                  <Keyword>public</Keyword>
-                                  <Keyword>function</Keyword>
+                                  <Keyword gap>public</Keyword>
+                                  <Keyword gap>function</Keyword>
                                   <Declear>init_widgets</Declear>
                                 </>
                               }
@@ -625,9 +625,9 @@ const CodePage = () => {
                             <Function
                               name={
                                 <>
-                                  <Keyword>public</Keyword>
-                                  <Keyword>static</Keyword>
-                                  <Keyword>function</Keyword>
+                                  <Keyword gap>public</Keyword>
+                                  <Keyword gap>static</Keyword>
+                                  <Keyword gap>function</Keyword>
                                   <Declear>get_instance</Declear>
                                 </>
                               }
@@ -638,7 +638,7 @@ const CodePage = () => {
                             scopeRef={
                               <Function name="if">
                                 <Keyword>null</Keyword>
-                                <Operator>{`===`}</Operator>
+                                <Operator gap>{`===`}</Operator>
                                 <Keyword>self</Keyword>
                                 <Operator>::</Operator>
                                 <Declear>$_instance</Declear>
@@ -649,13 +649,13 @@ const CodePage = () => {
                               <Keyword>self</Keyword>
                               <Operator>::</Operator>
                               <Declear>$_instance</Declear>
-                              <Operator>{`=`}</Operator>
-                              <Keyword>new</Keyword>
+                              <Operator gap>{`=`}</Operator>
+                              <Keyword gap>new</Keyword>
                               <Function name="Self" />
                             </Line>
                           </Scope>
                           <Line>
-                            <Keyword>return</Keyword>
+                            <Keyword gap>return</Keyword>
                             <Keyword>self</Keyword>
                             <Operator>::</Operator>
                             <Declear>$_instance</Declear>

@@ -25,29 +25,45 @@ export const Function = ({ name, children, invoke }) => {
 
 export const String = ({ children, single }) => {
   return (
-    <span className="mx-2 text-amber-300">
-      {single ? `'${children}'` : `"${children}"`}
+    <span className="text-amber-300">
+      {single ? ` '${children}' ` : ` "${children}" `}
     </span>
   );
 };
 
-export const Keyword = ({ children }) => {
-  return <span className="mr-2 text-amber-600">{children}</span>;
+export const Keyword = ({ children, gap }) => {
+  return (
+    <span className="text-amber-600">
+      {children}
+      {gap && " "}
+    </span>
+  );
 };
 
-export const Declear = ({ children }) => {
-  return <span className="mr-2 text-blue-400">{children}</span>;
+export const Declear = ({ children, gap }) => {
+  return (
+    <span className="text-blue-400">
+      {children}
+      {gap && " "}
+    </span>
+  );
 };
 
-export const Operator = ({ children }) => {
-  return <span className="mr-2 text-blue-500">{children}</span>;
+export const Operator = ({ children, gap }) => {
+  return (
+    <span className="text-blue-500">
+      {gap && " "}
+      {children}
+      {gap && " "}
+    </span>
+  );
 };
 
 export const Line = ({ children }) => {
   return (
     <div>
       {children}
-      <span className="text-gray-50">;</span>
+      <span>;</span>
     </div>
   );
 };
@@ -59,9 +75,9 @@ export const LineGap = () => {
 export const LongComment = ({ children }) => {
   return (
     <div className="my-4 ml-2 leading-tight text-green-600">
-      <div>{`/ *`}</div>
+      <div>{`/*`}</div>
       {children}
-      <div>{`* /`}</div>
+      <div>{`*/`}</div>
     </div>
   );
 };
